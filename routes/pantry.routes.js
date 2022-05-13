@@ -55,7 +55,7 @@ router.put('/edit/:pantryId', (req, res, next) => {
 
 
 //***** HANDLE PANTRY DELETION & REMOVE OWNER REFERENCE ******//
-router.post('/delete/:pantryId', (req, res, next) => {
+router.delete('/delete/:pantryId', (req, res, next) => {
 
   const { pantryId } = req.params
 
