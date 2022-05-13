@@ -4,7 +4,8 @@ const mongoose = require('mongoose');
 const User = require("../models/User.model");
 const Pantry = require("../models/Pantry.model");
 
-// const { isAuthenticated } = require('./../middleware/jwt.middleware');
+
+const { isAuthenticated } = require('./../middleware/jwt.middleware');
 
 
 //***** RETREIVE PANTRIES BY "OWNER" *****//
@@ -21,6 +22,19 @@ router.get('/:userId', (req, res, next) => {
 
 })
 
+
+//***** HANDLE MANAGE PANTRY *****//
+router.get('/manage/:pantryId', (req, res, next) => {
+
+  const { pantryId } = req.params
+
+  Pantry.findById(pantryId)
+  .populate('products')
+  .then(pantryFound => {
+    res.json(pantryFound)
+  })
+  .catch(error => console.log(error))
+})
 
 //***** HANDLE NEW PANTRY CREATION *****//
 router.post('/create', (req, res, next) => {
