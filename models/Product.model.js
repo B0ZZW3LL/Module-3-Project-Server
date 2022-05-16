@@ -10,7 +10,7 @@ const productSchema = new Schema(
     category: { type: String },
     description: { type: String },
     manufacturer: { type: String },
-    qty: { type: String },
+    qty: { type: Number },
     pantryId: { type: Schema.Types.ObjectId, ref: "User" }
   },
   {
